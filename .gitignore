@@ -1,6 +1,9 @@
 data
 logs
 venv
+dist
+build
+*.spec
 __pycache__
 configuracoes.json
 cache.json
