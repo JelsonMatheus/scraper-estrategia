@@ -84,7 +84,7 @@ def download_pdf(driver:WebDriver, path:'Path', lesson:dict):
 
 def download_video(driver:WebDriver, path:'Path'):
     el_videos = driver.find_elements(By.CSS_SELECTOR, '.ListVideos-items-video .VideoItem')
-    for i, el_video in enumerate(el_videos[:1]):
+    for i, el_video in enumerate(el_videos):
         path_video = path / 'videos'
         path_video.mkdir(parents=True, exist_ok=True)
         oname = el_video.find_element(By.CLASS_NAME, 'VideoItem-info-title').get_attribute('textContent')
@@ -117,7 +117,7 @@ def download_lessons(driver:WebDriver, link:str, course:str, path:'Path'):
     util.sleep(5, 10)
     el_lessons = driver.find_elements(By.CSS_SELECTOR, '.LessonList-item a')
     list_lessons = []
-    for el_lesson in el_lessons[0:2]:
+    for el_lesson in el_lessons:
         data = {'link': el_lesson.get_attribute('href')}
         data['name'] = el_lesson.find_element(By.TAG_NAME, 'h2').text
         list_lessons.append(data)
@@ -147,7 +147,7 @@ def download_courses(driver:WebDriver):
         if 'aulas' in data['link']:
             list_course.append(data)
     
-    for course in list_course[:1]:
+    for course in list_course:
         if SETTINGS['cursos'] and not course['name'] in SETTINGS['cursos']:
             continue
         if not course['name'] in CACHE:
