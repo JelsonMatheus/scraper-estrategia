@@ -1,0 +1,6 @@
+data
+logs
+venv
+__pycache
+configuracoes.json
+cache.json
