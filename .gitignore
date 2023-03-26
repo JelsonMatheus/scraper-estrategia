@@ -1,6 +1,6 @@
 data
 logs
 venv
-__pycache
+__pycache__
 configuracoes.json
 cache.json
